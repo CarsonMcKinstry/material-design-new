@@ -2,7 +2,7 @@
   position: fixed;
   bottom: 0;
   height: 100%;
-  z-index: 1000;
+  // z-index: 1000;
   
   @media screen and (min-width: 768px) {
     &.mdc-drawer--persistent {

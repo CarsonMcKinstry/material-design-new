@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import './App.scss';
-import Toolbar from './Toolbar/';
+import TopBar from './TopBar/';
 import Sidebar from './Sidebar/';
-
+import { Button } from 'rmwc/Button';
 
 class App extends Component {
 
   state = {
     sidebar: {
       open: false,
-      pinned: true
+      pinned: false
     },
     width: 0,
   }
@@ -62,7 +62,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Toolbar
+        <TopBar
+          uiWidth={ this.state.width }
           onMenuButtonClick={ this.handleSidebarToggle }
         />
         <Sidebar
@@ -73,6 +74,7 @@ class App extends Component {
           togglePin={ this.handleSidebarPin }
         />
         <main className={ this.state.sidebar.open ? "open" : ""}>
+          <Button>Thingy</Button>
         </main>
       </div>
     );
