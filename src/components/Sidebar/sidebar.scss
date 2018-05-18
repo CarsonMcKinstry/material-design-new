@@ -1,0 +1,35 @@
+.sidebar {
+  position: fixed;
+  bottom: 0;
+  height: 100%;
+  z-index: 1000;
+  
+  @media screen and (min-width: 768px) {
+    &.mdc-drawer--persistent {
+      width: 60px;
+      .mdc-drawer__drawer {
+        transform: translateX(calc(-100% + 60px));
+      }
+    }
+  }
+
+  .mdc-drawer__content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 60px;
+    .mdc-list {
+      box-sizing: border-box;
+      position: relative;
+      .pin-sidebar {
+  
+        bottom: 0;
+      }
+    }
+  }
+
+
+
+
+}

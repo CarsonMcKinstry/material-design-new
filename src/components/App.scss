@@ -1,0 +1,19 @@
+$mdc-animation-standard-curve-timing-function: cubic-bezier(.4, 0, .2, 1) !default;
+$mdc-slidable-drawer-transition-close-time: 250ms;
+
+@mixin standard-transition($name, $duration, $delay: 0ms) {
+  transition: $name $duration $mdc-animation-standard-curve-timing-function;
+}
+
+.App {
+
+}
+
+main {
+  padding: 24px;
+  margin-left: 3%;
+  &.open {
+    margin-left: 240px;
+  }
+  @include standard-transition(margin-left, $mdc-slidable-drawer-transition-close-time);
+}

@@ -1,0 +1,9 @@
+.toolbar {
+  z-index: 10000;
+  @media screen and (min-width: 768px) {
+    .menu-icon {
+      display: none;
+    }
+  }
+}
+
