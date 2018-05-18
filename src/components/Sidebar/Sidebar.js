@@ -23,8 +23,8 @@ class FlowSidebar extends Component {
       <DrawerContent>
         <List>
           <ListItem>
-            <ListItemText>New Workorder</ListItemText>
-            <ListItemMeta>add</ListItemMeta>
+            <ListItemText>I'm a menu item</ListItemText>
+            <ListItemMeta>favorite</ListItemMeta>
           </ListItem>
         </List>
         {this.props.uiWidth > 768 && (

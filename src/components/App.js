@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.scss';
 import TopBar from './TopBar/';
 import Sidebar from './Sidebar/';
+import Collage from './Collage/';
 import { Button } from 'rmwc/Button';
 
 class App extends Component {
@@ -74,7 +75,7 @@ class App extends Component {
           togglePin={ this.handleSidebarPin }
         />
         <main className={ this.state.sidebar.open ? "open" : ""}>
-          <Button>Thingy</Button>
+          <Collage/>
         </main>
       </div>
     );
