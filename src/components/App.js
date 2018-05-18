@@ -4,6 +4,7 @@ import TopBar from './TopBar/';
 import Sidebar from './Sidebar/';
 import Collage from './Collage/';
 import { Button } from 'rmwc/Button';
+import { Switch, Route } from 'react-router-dom';
 
 class App extends Component {
 
@@ -31,8 +32,7 @@ class App extends Component {
         return {
           width,
           sidebar: {
-            open: false,
-            pinned: false
+            open: false
           }
         }
       }
@@ -51,15 +51,6 @@ class App extends Component {
     }));
   }
 
-  handleSidebarPin = () => {
-    this.setState(prevState => ({
-      sidebar: {
-        ...prevState.sidebar,
-        pinned: !prevState.sidebar.pinned
-      }
-    }));
-  }
-
   render() {
     return (
       <div className="App">
@@ -67,15 +58,16 @@ class App extends Component {
           uiWidth={ this.state.width }
           onMenuButtonClick={ this.handleSidebarToggle }
         />
-        <Sidebar
+        <Sidebar 
+          uiWidth={ this.state.width } 
           open={ this.state.sidebar.open }
-          pinned={ this.state.sidebar.pinned }
-          uiWidth={ this.state.width }
-          toggle={ this.handleSidebarToggle }
-          togglePin={ this.handleSidebarPin }
+          toggleSidebar={ this.handleSidebarToggle }
         />
-        <main className={ this.state.sidebar.open ? "open" : ""}>
-          <Collage/>
+        <main>
+          <Switch>
+            <Route exact path="/" render={() => <h2>Hello World</h2>}/>
+            <Route path="/pics" render={() => <Collage columns={5}/>}/>
+          </Switch>
         </main>
       </div>
     );

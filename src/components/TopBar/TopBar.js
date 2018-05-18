@@ -40,7 +40,7 @@ class FlowTopAppBar extends Component {
               use="menu"
               onClick={ this.props.onMenuButtonClick }
             />
-            <TopAppBarTitle>Floworks</TopAppBarTitle>
+            <TopAppBarTitle>Stuff & Things</TopAppBarTitle>
           </TopAppBarSection>
           <TopAppBarSection alignEnd>
             <MenuAnchor>

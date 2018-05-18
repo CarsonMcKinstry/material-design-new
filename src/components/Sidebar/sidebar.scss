@@ -2,7 +2,12 @@
   position: fixed;
   bottom: 0;
   height: 100%;
-  // z-index: 1000;
+  z-index: 1000;
+
+  a {
+    text-decoration: none;
+    color: rgba(0,0,0,0.87);
+  }
   
   @media screen and (min-width: 768px) {
     &.mdc-drawer--persistent {

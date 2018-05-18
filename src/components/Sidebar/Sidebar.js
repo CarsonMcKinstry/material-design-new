@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import './sidebar.scss';
-
+import { Link } from 'react-router-dom';
 import {
   Drawer,
   DrawerHeader,
@@ -12,53 +12,65 @@ import {
   List,
   ListItem,
   ListItemText,
-  ListItemMeta
+  ListDivider,
+  ListItemGraphic
 } from 'rmwc/List';
+
+const navItems = [
+  {
+    path: '/',
+    graphic: 'home',
+    primaryText: 'Home'
+  },
+  {
+    path: '/pics',
+    graphic: 'favorite',
+    primaryText: 'Pics'
+  },
+  {
+    isDivider: true
+  }
+]
 
 class FlowSidebar extends Component {
 
-  renderMenuContent = () => {
+  isOpen = () => {
+    const { uiWidth, open } = this.props;
 
-    return (
-      <DrawerContent>
-        <List>
-          <ListItem>
-            <ListItemText>I'm a menu item</ListItemText>
-            <ListItemMeta>favorite</ListItemMeta>
-          </ListItem>
-        </List>
-        {this.props.uiWidth > 768 && (
-          <List>
-            <ListItem className="pin-sidebar" onClick={ this.props.togglePin}>
-              <ListItemText>{ this.props.pinned ? 'Unpin' : 'Pin'} Sidebar</ListItemText>
-              <ListItemMeta>{this.props.pinned ? 'chevron_left' : 'chevron_right'}</ListItemMeta>
-            </ListItem>
-          </List>
-        )}
-      </DrawerContent>
-    )
-
+    if (uiWidth > 768 ) {
+      return true;
+    } else {
+      return open;
+    }
+    
   }
 
   render() {
-    const { uiWidth, open, pinned, toggle } = this.props;
-    return uiWidth > 768 
-      ? (<Drawer
-          persistent
-          className="sidebar"
-          open={pinned || open}
-          onMouseEnter={toggle}
-          onMouseLeave={toggle}
-        >
-        { this.renderMenuContent() }
-        </Drawer>)
-      : (<Drawer
-          persistent
-          className="sidebar"
-          open={ open }
-        >
-        { this.renderMenuContent() }
-        </Drawer>)
+    return (
+      <Drawer
+        open={ this.isOpen() }
+        persistent
+        className="sidebar"
+      >
+        <DrawerContent>
+          <List>
+            {
+              navItems.map(item => {
+
+                return item.isDivider ? <ListDivider/> : (
+                  <Link to={ item.path} onClick={ this.props.toggleSidebar}>
+                    <ListItem>
+                      <ListItemGraphic>{item.graphic}</ListItemGraphic>
+                      <ListItemText>{item.primaryText}</ListItemText>
+                    </ListItem>
+                  </Link>
+                )
+              })
+            }
+          </List>
+        </DrawerContent>
+      </Drawer>
+    )
   }
 
 }

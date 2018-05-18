@@ -12,10 +12,10 @@ $mdc-slidable-drawer-transition-close-time: 250ms;
 main {
   z-index: 1;
   padding: 78px 12px 12px;
-  margin-left: 60px;
+  margin-left: 240px;
   height: 100%;
-  &.open {
-    margin-left: 240px;
-  }
   @include standard-transition(margin-left, $mdc-slidable-drawer-transition-close-time);
+  @media screen and (max-width: 768px){
+    margin-left: 0;
+  };
 }
